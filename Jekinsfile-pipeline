@@ -1,0 +1,39 @@
+node{
+    def mavenHome = tool name: 'maven3.8.2'
+
+    stage('1-Clone') {
+        git branch: 'development', credentialsId: 'Github_Credential', url: 'https://github.com/jenkinpipe/maven-web-application'
+    }
+    stage('2-mavenBuild') {
+        sh "${mavenHome}/bin/mvn clean package"
+    }
+    stage('3-CodeQuality') {
+        sh "${mavenHome}/bin/mvn sonar:sonar"
+    }
+    stage('4-UploadArtifacts') {
+       sh "${mavenHome}/bin/mvn deploy"
+    }
+    stage('5-Deploy-UAT') {
+        deploy adapters: [tomcat9(credentialsId: 'tomcatomcat', path: '', url: 'http://18.191.158.241:7000//')], contextPath: null, war: 'target/*war'
+    }
+    stage('6-EmailNotification') {
+        emailext body: '''Hello team,
+
+The Ebay-project
+
+Christopher Adebajo''', subject: 'Build Status', to: 'Developers'
+    }
+    stage('Approval'){
+        timeout(time:8, unit: 'HOURS'){
+            input message: 'Please verify and Approval'
+        }
+
+    }
+    stage('Prod-Deploy'){
+        deploy adapters: [tomcat9(credentialsId: 'tomcatomcat', path: '', url: 'http://18.191.158.241:7000//')], contextPath: null, war: 'target/*war'
+
+    
+    
+
+    }
+}
