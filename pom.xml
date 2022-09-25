@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://54.67.81.71:8191/landmark/repository/tesla-fe-releases/</url>
+	      <url>http://54.67.81.71:8191/landmark/repository/fintech-app-releases/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://54.67.81.71:8191/landmark/repository/tesla-fe-snapshots/</url>
+	      <url>http://54.67.81.71:8191/landmark/repository/fintech-app-snapshots/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
