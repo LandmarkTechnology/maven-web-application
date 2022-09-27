@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://54.67.81.71:8191/landmark/repository/fintech-app-releases/</url>
+	      <url>http://54.67.81.71:8191/landmark/repository/paypal-releases/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://54.67.81.71:8191/landmark/repository/fintech-app-snapshots/</url>
+	      <url>http://54.67.81.71:8191/landmark/repository/paypal-snapshots/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
