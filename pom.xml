@@ -104,7 +104,7 @@
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http:http://52.9.37.93:8081/repository/pipe-snapshots/</url>
+	      <url>http://52.9.37.93:8081/repository/pipe-snapshots/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
