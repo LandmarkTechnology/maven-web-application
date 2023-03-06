@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://18.116.69.9:8181/deestories/repository/tesla-fe-releases/</url>
+	      <url>http://18.116.69.9:8181/deestories/repository/testapp-releases/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://18.116.69.9:8181/deestories/repository/tesla-fe-snapshots/</url>
+	      <url>http://18.116.69.9:8181/deestories/repository/testapp-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
