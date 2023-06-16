@@ -110,7 +110,7 @@
 	</distributionManagement>
 	
 	<build>
-		<finalName>Paypal</finalName>
+		<finalName>Tesla-webapp</finalName>
 		
 		<plugins>
 			<plugin>
