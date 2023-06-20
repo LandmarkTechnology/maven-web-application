@@ -5,7 +5,7 @@
 	<groupId>com.mt</groupId>
 	<artifactId>maven-web-application</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	
 	<name>maven-web-application</name>
 
@@ -100,8 +100,13 @@
 	      <name>Landmark Technologies Releases Nexus Repository</name>
 	      <url>http://34.205.62.200:8081/repository/Toyota-releases/</url>
 	    </repository>
-	    
-	   
+
+		
+	    <snapshotRepository>
+	      <id>nexus</id>
+	      <name>Landmark Technologies Snapshot Nexus Repository</name>
+	      <url>http://34.205.62.200:8081/repository/Toyota-snapshots/</url>
+	    </snapshotRepository>
 	    
 	</distributionManagement>
 	
