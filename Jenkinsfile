@@ -13,7 +13,7 @@ stage('3.CodeQualityAnalysis'){
 stage('4.Artifactory'){
  sh "${mavenHome}/bin/mvn deploy"}
 stage('5.deploy2UAT'){
-deploy adapters: [tomcat9(credentialsId: 'tomcat-credential', path: '', url: 'http://52.23.203.16:8177/')], contextPath: null, war: 'target/*war'
+deploy adapters: [tomcat9(credentialsId: 'tomcat-credential', path: '', url: 'http://3.94.146.235:8177/')], contextPath: null, war: 'target/*war'
 }
 stage('6.approval'){
     sh "echo 'apps ready for review' "
@@ -22,7 +22,7 @@ stage('6.approval'){
       }
 }      
 stage('7.production'){
-    deploy adapters: [tomcat9(credentialsId: 'tomcat-credential', path: '', url: 'http://52.23.203.16:8177/')], contextPath: null, war: 'target/*war'
+    deploy adapters: [tomcat9(credentialsId: 'tomcat-credential', path: '', url: 'http://3.94.146.235:8177/')], contextPath: null, war: 'target/*war'
 }
 stage('8.notification'){
     emailext body: '''Hello Team,
