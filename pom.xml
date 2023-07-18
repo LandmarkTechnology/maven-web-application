@@ -97,14 +97,14 @@
 	
 	    <repository>
 	      <id>nexus</id>
-	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://35.174.19.3:8081/repository/amazon-release/</url>
+	      <name>Primus-learning release repository </name>
+	      <url>http://3.83.29.194:8081/repository/TRSLA-REPO-RELEASE/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://35.174.19.3:8081/repository/amazon-snapshot/</url>
+	      <name>Primus-learning snapshot repository </name>
+	      <url>http://3.83.29.194:8081/repository/TESLA-REPO-SNAPSHOT/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
