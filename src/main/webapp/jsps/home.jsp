@@ -24,11 +24,7 @@
 		<img src="images/myobsquralogo.jpg" alt="" width="100">
 	</span>
 	<span style="font-weight: bold;">
-		obsqura Technology, 
-		Toronto, Ontario, Canada
-		Dallas, TX USA, 
-		+1 437 215 2483,
-		myobsquratech@gmail.com
+		obsqura Technology
 		<br>
 		<a href="mailto:myobsquratech@gmail.com">Mail to obsqura Technologies</a>
 	</span>
