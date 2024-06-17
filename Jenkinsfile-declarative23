@@ -1,0 +1,65 @@
+pipeline{
+  agent any  
+  tools {
+    maven "maven3.8.2"
+  }
+  //options {}  
+  //triggers {}
+  stages{
+    stage('1clone'){
+      steps{
+        sh "echo ready to automate build"
+        git 'https://github.com/LandmakTechnology/maven-web-application'
+        sh "echo latest application version collected from SCM"
+      }   
+    }
+    stage('2build'){
+      steps{
+        sh "echo build process starts "
+        sh "mvn clean package"
+        sh "echo build process ends"
+      }
+    }
+ 
+    stage('3review'){
+      steps{
+        sh "echo CodeQuality review  starts "
+        sh "mvn sonar:sonar"
+        sh "echo CodeQuality review ends"
+      }
+    }      
+    stage('4UploadArtifacts'){
+      steps{
+        sh "mvn deploy"
+        sh "echo build and release job completed successfully"
+      }     
+    }
+    stage('5deployment'){
+      steps{
+        deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://54.166.85.32:8177/')], contextPath: null, war: 'target/*war'
+        sh "echo deployment to production completed successfully"
+      }       
+    }
+  }
+  post{
+    failure{
+         emailext body: '''Hi Team,
+Build failed
+Landmark Technologies''', recipientProviders: [developers(), contributor()], subject: 'build status', to: 'developers'
+
+    }
+    success{
+         emailext body: '''Hi Team,
+Build succeeded
+Landmark Technologies''', recipientProviders: [developers(), contributor()], subject: 'build status', to: 'developers'
+
+    }
+    always{
+         emailext body: '''Hi Team,
+Build status
+Landmark Technologies''', recipientProviders: [developers(), contributor()], subject: 'build status', to: 'developers'
+
+    }
+  }
+  
+}

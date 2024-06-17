@@ -1,32 +1,46 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.net.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Mylandmark.Tech- Home Page</title>
-<link href="images/landmarklogo.jpg" rel="icon">
+<title>LandmarkTechnologies- Home Page</title>
+<link href="images/mylandmarklogo.png" rel="icon">
 </head>
 </head>
 <body>
-<h1 align="center">Landmark Technology  --> A Metropolitan University Company</h1>
-<h1 align="center"> Welcome to Landmark Technology.......We have a demo on DevOps E Degree with Linux and AWS  on Saturday August 5, 2020 at 4pm EST for our new batch. 
-	Landmark Technology is a an ideal online training  platform for DevOps and Cloud Infrastructures. 
-	Our anointed and extensive teaching approach takes our students with or without any IT Background to become Subject Matter Expect in IT, and DevOps automation.
-	Over 80% of our students are hired within 6 months of joining Landmark Technology.
-	Congratulations!! Welcome to Landmark Technology!! Welcome to your ENVIABLE IT CAREER.
-	We offer interview preparations and job assitance.
-	The King is in our midst. His name is JESUS. What a wonderful it is. HE IS OUR SUCCESS ACCESS KEY.
-	Thanks for being an ambassador of Landmark Technology. President</h1>
+<h1 align="center">Welcome to Tesla Web application Project.</h1>
+<h1 align="center">Landmark Software Solutions (LSS)  are developing and supporting quality Software Solutions to millions of clients globally.
+	           We are raising billionaires IT professionals accross the nations of the World.
+	Landmark Software Solutions (LSS) offers Training for DevOps with Linux, Kubernetes and Cloud, equipping IT Engineers for best performance.
+        Landmark Technologies, the Pride of Africa.
+	Class36 DevOps MasterClass started on April 13, 2024.
+        Class37 DevOps MasterClass will start on July 13, 2024.
+        Please invite all your contacts and friends for this life changing course.
+</h1>
+<hr>
+<br>
+	<h1><h3> Server Side IP Address </h3><br>
+
+<% 
+String ip = "";
+InetAddress inetAddress = InetAddress.getLocalHost();
+ip = inetAddress.getHostAddress();
+out.println("Server Host Name :: "+inetAddress.getHostName()); 
+%>
+<br>
+<%out.println("Server IP Address :: "+ip);%>
+		
+</h1>
+	
 <hr>
 <div style="text-align: center;">
 	<span>
-		<img src="images/mylandmarklogo.jpg" alt="" width="100">
+		<img src="images/mylandmarklogo.png" alt="" width="150">
 	</span>
 	<span style="font-weight: bold;">
-		Landmark Technology, 
-		Toronto, Ontario, Canada
-		Dallas, TX USA, 
+                Landmark Technology, 
+		Toronto, Canada
 		+1 437 215 2483,
 		mylandmarktech@gmail.com
 		<br>
@@ -37,8 +51,8 @@
 	<p> Service : <a href="services/employee/getEmployeeDetails">Get Employee Details </p>
 <hr>
 <hr>
-<p align=center>Landmark Technologies - Consultant, Training, Development Center.</p>
-<p align=center><small>Copyrights 2019 by <a href="http://mylandmark.tech/">Landmark Technologies</a> </small></p>
+<p align=center> Landmark Technologies - Consultant, Training and Software Development</p>
+<p align=center><small>Copyrights 2021 by <a href="http://mylandmarktech.com/">Landmark Technologies</a> </small></p>
 
 </body>
 </html>

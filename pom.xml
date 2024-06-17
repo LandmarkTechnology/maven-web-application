@@ -1,11 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+	<!-- build triggers -->
 	<groupId>com.mt</groupId>
 	<artifactId>maven-web-application</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	
+	<version>0.0.2-SNAPSHOT</version> 
 	
 	<name>maven-web-application</name>
 
@@ -21,12 +22,11 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http:3.96.196.171:9000/</sonar.host.url>
-		<sonar.login>admin</sonar.login>
-		<sonar.password>admin</sonar.password>
+		<sonar.host.url>http://52.4.6.171:9000/</sonar.host.url> 
+		<sonar.login>c8a02230642b4c13c24763fd3697b038b78616de</sonar.login>
+		<!-- <sonar.password>admin</sonar.password> -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
 	</properties>
 
 	<dependencies>
@@ -89,28 +89,26 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 			<scope>provided</scope>
-		</dependency>
-		
-	</dependencies>
-	
+		</dependency>	
+	</dependencies>	
+
 	<distributionManagement>
-	
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://35.174.19.3:8081/repository/amazon-release/</url>
+	      <url>http://52.4.6.171:8089/landmark/repository/tesla-be-releases/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://35.174.19.3:8081/repository/amazon-snapshot/</url>
+	      <url>http://52.4.6.171:8089/landmark/repository/tesla-be-snapshots/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
 	
 	<build>
-		<finalName>Landmark</finalName>
+		<finalName>tesla</finalName>
 		
 		<plugins>
 			<plugin>

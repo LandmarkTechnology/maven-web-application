@@ -23,10 +23,11 @@ public class EmployeeService {
 
 		JSONObject js = new JSONObject();
 		js.put("Name", "Landmark Technologies");
-		js.put("Calling Name", "mylandmark");
-		js.put("DOB", "May 1, 2005");
-		js.put("Hobbies", "Praying, Singing, Reading Technical Blogs,Teaching, Helping to Poor People..");
-		js.put("Places he like", "Africa, NA, Bali");
+		js.put("Calling Name", "Landmark");
+		js.put("DOB", "08-Nov-2011");
+		js.put("Hobbies", "Reading Technical Blogs,Teaching, Changing lives..");
+		js.put("Places he like", "Africa, Church, His native place");
+
 		return js.toString();
 }
 }

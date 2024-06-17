@@ -1,0 +1,81 @@
+pipeline{
+    agent any 
+    tools{
+        maven 'maven3.9.4'
+    }
+    //options{}
+    //triggers{}
+    stages{
+      stage('1.CloneCode'){
+        steps{
+            sh "echo 'cloning the latest application version' "
+            git "https://github.com/LandmakTechnology/maven-web-application"
+        }
+      }
+      stage('2.mvnBuild'){
+        steps{
+          sh "echo 'running JUnit-test-cases' "
+          sh "echo 'testing must passed to create artifacts ' "
+          sh "mvn clean package"             
+        }
+      }
+      stage('3.CodeQuality'){
+        steps{
+          sh "echo 'Perfoming CodeQualityAnalysis' "
+          //sh "mvn sonar:sonar"              
+        }
+      }
+      stage('4.UploadArtifacts'){
+        steps{
+          sh "mvn deploy"   
+        }
+      }
+      stage('5.Deploy2UAT'){
+        steps{
+            deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://34.219.51.216:8177/')], contextPath: null, war: 'target/*war'
+        }
+      }
+      stage('6.ManualApproval'){
+        steps{
+          sh "echo 'Please review the application performance' "
+          timeout(time:600, unit:'MINUTES') {
+          input message: 'Application ready for deployment, Please review and approve'
+      }  
+        }
+      }
+      stage('7.Deploy2Prod'){
+        steps{
+            deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://34.219.51.216:8177/')], contextPath: null, war: 'target/*war'
+         }
+      }
+    }
+    post{
+        always{
+  emailext body: '''Hi Team,
+
+  The build and Deployment status for is a success.
+
+  Regards,
+  Landmark Technologies ''', recipientProviders: [buildUser(), contributor(), developers(), requestor()], subject: 'build and deployment status', to: 'mylandmarktech@gmail.com'
+
+        }
+        success{
+  emailext body: '''Hi Team,
+
+  The build and Deployment is a success.
+
+  Regards,
+  Landmark Technologies ''', recipientProviders: [buildUser(), contributor(), developers(), requestor()], subject: 'build and deployment status', to: 'mylandmarktech@gmail.com'
+
+        }
+        failure{
+  emailext body: '''Hi Team,
+
+  The build and Deployment failed.
+
+  Regards,
+  Landmark Technologies ''', recipientProviders: [buildUser(), contributor(), developers(), requestor()], subject: 'build and deployment status', to: 'mylandmarktech@gmail.com'
+
+        }
+    }
+}
