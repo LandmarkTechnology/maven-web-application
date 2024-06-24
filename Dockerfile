@@ -1,3 +1,5 @@
 FROM tomcat:8.0.20-jre8
-# Dummy text to test 
-COPY target/maven-web-application*.war /usr/local/tomcat/webapps/maven-web-application.war
+#### Good stuff
+## jesus is Lord
+# thanks team member uk
+COPY target/*.war /usr/local/tomcat/webapps/maven-web-app.war

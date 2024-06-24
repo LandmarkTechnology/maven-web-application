@@ -1,0 +1,45 @@
+node{
+  def mavenHome = tool name: 'maven3.9.7'
+  stage('1.GitClone'){
+   git "https://github.com/LandmakTechnology/maven-web-application"
+}
+  stage('2.mavenBuild'){
+    sh "${mavenHome}/bin/mvn package"
+  }
+  stage('3.sonaqubeQuality'){
+    sh "${mavenHome}/bin/mvn sonar:sonar"
+  }
+  stage('4.UploadArtifacts'){
+    //sh "${mavenHome}/bin/mvn deploy"
+    sh "echo The build and release job is ended"
+  }
+  stage('5.deploy2UAT'){
+    sh "echo deployment launched using deploy2container plugin"
+deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://54.152.168.210:8088/')], contextPath: null, war: 'target/*war'
+
+  }
+ stage('6.ManualApproval'){
+    sh " echo 'Please review & approve' "
+    timeout(time:3, unit:'HOURS')  
+    {
+    input message: 'Application ready for deployment, Please review and approve'
+    }  
+ }
+ stage('7.deploy2prod'){
+    sh "echo deployment launched to production"
+deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://54.152.168.210:8088/')], contextPath: null, war: 'target/*war'
+
+ }
+stage('8.apm'){
+    sh "echo 'monitoring, observation and alerting' "
+    sh "echo 'application performance Monitoring in progress' "
+}
+  stage('9.notification'){
+        emailext body: '''The build and Deployment status for tesla-webapp.
+
+Regards,
+Landmark Technologies''', recipientProviders: [developers(), upstreamDevelopers(), buildUser()], subject: 'job status', to: 'mylandmarktech@gmail.com'
+
+  }
+
+}

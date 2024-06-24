@@ -1,0 +1,55 @@
+node{
+    def mavenHome = tool name: 'maven3.9.4'
+    stage('1.CloneCode'){
+        //Jenkins running on a Linux system  
+        //sh "git clone https://github.com/LandmakTechnology/maven-web-application"
+        git "https://github.com/LandmakTechnology/maven-web-application"
+        //Jenkins running on a windows system
+        //bat "git clone https://github.com/LandmakTechnology/maven-web-application"  
+    }
+    stage('2.mvnBuild'){
+        sh "${mavenHome}/bin/mvn clean package"
+    }
+    stage('3.CodeQuality'){
+        //sh "${mavenHome}/bin/mvn sonar:sonar"
+        //edit pom.xml propertiesTAG with SonarQube server details
+    }
+    stage('4.UploadArtifacts'){
+        //sh "${mavenHome}/bin/mvn deploy"
+        //edit pom.xml distributionManagement TAG with repository details
+        //edit settings.xml with nexus-user login credentials       
+    }
+    stage('5.Deploy2UAT'){
+        //use deploy-to-container plugin via pipeline syntax
+        //deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://34.219.51.216:8177/')], contextPath: null, war: 'target/*war'
+        //Deploying [/var/lib/jenkins/workspace/tesla-app-pipeline/target/tesla.war]
+    }
+    stage('6.6ManualApproval'){
+        sh "echo 'Please review the application performance' "
+        //timeout(time:600, unit:'MINUTES') {
+        //input message: 'Application ready for deployment, Please review and approve'
+      }       
+    }
+    stage('7.Deploy2Prod'){
+      sh "echo 'Deploy application to the customers/production' " 
+     //deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://34.219.51.216:8177/')], contextPath: null, war: 'target/*war'
+         
+    }
+    stage('8.APM'){
+        sh "echo 'monitoring and observation and alerting' "
+        sh "echo 'application performance Monitoring in progress' "
+    }
+    stage('9.emailNotification'){
+        sh "echo 'notify the team for unusual accurances' "
+        sh "echo 'notify the team if the applications are down' "
+        sh "echo 'notify the team if the latency is higher that expected' "
+        emailext body: '''Hi Team,
+
+The build and Deployment status for tesla-app follows.
+
+Regards,
+Landmark Technologies ''', recipientProviders: [buildUser(), contributor(), developers(), requestor()], subject: 'build and deployment status', to: 'mylandmarktech@gmail.com'
+
+    }
+}
+
