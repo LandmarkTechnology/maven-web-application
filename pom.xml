@@ -21,9 +21,9 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http:3.96.196.171:9000/</sonar.host.url>
-		<sonar.login>admin</sonar.login>
-		<sonar.password>admin</sonar.password>
+		<sonar.host.url>http://3.145.190.75:9000/</sonar.host.url>
+		<sonar.login>admin</sonar.login> 
+		<sonar.password>admin</sonar.password> 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -37,7 +37,6 @@
 			<version>20160212</version>
 		</dependency>
 		
-		<!-- test dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -59,7 +58,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- compile dependencies -->
+
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -82,7 +81,6 @@
 			<version>${spring.version}</version>
 		</dependency>
 		
-		<!-- provided dependencies -->
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -98,19 +96,19 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://35.174.19.3:8081/repository/amazon-release/</url>
+	      <url>http://3.16.136.62:8081/repository/tesla-be-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://35.174.19.3:8081/repository/amazon-snapshot/</url>
+	      <url>http://3.16.136.62:8081/repository/tesla-be-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
 	
 	<build>
-		<finalName>Landmark</finalName>
+		<finalName>tesla</finalName>
 		
 		<plugins>
 			<plugin>
