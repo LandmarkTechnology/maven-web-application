@@ -1,0 +1,59 @@
+pipeline{
+    agent any 
+    tools {
+        maven "maven3.8.6"
+    }
+    stages {
+stage('1cloning'){
+    steps{
+       sh  "echo 'cloning the latest application version' "
+       git credentialsId: 'jkgitcred', url: 'https://github.com/christinedee/maven-web-application.git' //for private repo, generate pipeline syntax
+       //git "repolink" or sh "git clone repolink" only works for public repositories
+    }
+}
+stage('2Test+Build'){
+steps{
+    sh "echo 'running JUnit-test-cases' "
+    sh "echo 'testing must be passed to create artifacts' "
+    sh "mvn clean package"
+}
+}
+stage('3Codequality'){
+ steps{
+     sh "echo 'performing code quality analysis with sonarQb' "
+     sh "mvn sonar:sonar"
+ }   
+}
+
+stage('4uploadNexus'){
+ steps{
+     sh "echo 'uploading artifacts to nexus' "
+     sh "mvn deploy"
+    }
+}
+stage('5deploy2uat'){
+    steps{
+        deploy adapters: [tomcat9(credentialsId: 'deployment', path: '', url: 'http://54.215.245.202:8080/')], contextPath: '/opt/webapps', war: 'target/*war'
+    }
+
+}
+
+stage('6deploy2prod'){
+    steps{
+        deploy adapters: [tomcat9(credentialsId: 'deployment', path: '', url: 'http://54.215.245.202:8080/')], contextPath: '/opt/webapps', war: 'target/*war'
+    }
+}
+}
+    
+    post {
+        always{
+            emailext body: 'check build status', recipientProviders: [buildUser(), contributor(), developers(), previous(), upstreamDevelopers()], subject: 'success', to: 'nayalea353@gmail.com'
+        }
+        success{
+            emailext body: 'build and deployment is successful', recipientProviders: [buildUser(), contributor(), developers(), previous(), upstreamDevelopers()], subject: 'success', to: 'nayalea353@gmail.com'
+        }
+        failure{
+            emailext body: 'build failed, check pipeline script', recipientProviders: [buildUser(), contributor(), developers(), previous(), upstreamDevelopers()], subject: 'success', to: 'nayalea353@gmail.com'
+        }
+    }
+}
