@@ -1,3 +1,3 @@
-FROM tomcat:8.0.20-jre8
-# Dummy text to test 
-COPY target/maven-web-application*.war /usr/local/tomcat/webapps/maven-web-application.war
+FROM tomcat:9.0.91-jdk11-corretto
+# author is Simon Legah of Landmark Technologies
+COPY target/*.war /usr/local/tomcat/webapps/webapp.war
